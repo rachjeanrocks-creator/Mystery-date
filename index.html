@@ -102,34 +102,25 @@
     z-index:5;
   }
 
-  /* Heart-Shaped Clues */
+  /* Clean Text Box Clues */
   .clue {
     position: absolute;
-    background: #ff6b6b;
-    color: #fff;
-    padding: 12px;
-    font-size: 0.9em;
+    background: rgba(255,255,255,0.95);
+    color: #000;
+    padding: 10px 15px;
+    font-size: 0.95em;
     display: none;
     white-space: nowrap;
     z-index: 6;
-    box-shadow: 0 0 12px rgba(255,0,0,0.5);
-    clip-path: polygon(
-      50% 0%,
-      61% 12%,
-      75% 12%,
-      88% 25%,
-      100% 38%,
-      88% 50%,
-      75% 62%,
-      50% 100%,
-      25% 62%,
-      12% 50%,
-      0 38%,
-      12% 25%,
-      25% 12%,
-      39% 12%
-    );
-    text-align: center;
+    border: 2px solid #ff6b6b;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    animation: popIn 0.3s ease forwards;
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
   }
 
   .eclipse {
@@ -213,7 +204,8 @@ heartClues.forEach(clueText=>{
   heart.addEventListener('click',()=>{
     clue.style.display='block';
     clue.style.top=(parseFloat(heart.style.top)-60)+'px';
-    clue.style.left=(parseFloat(heart.style.left)-10)+'px';
+    clue.style.left=(parseFloat(heart.style.left)-20)+'px';
+    clue.style.animation='popIn 0.3s ease forwards';
   });
 
   // float animation
@@ -239,5 +231,3 @@ function showEclipse(){
 
 </body>
 </html>
-
-
